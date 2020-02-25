@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "name": "github-code-review",
+    "description": "Makes github code reviews easier",
+    "version": "1.1",
+
+    "permissions": [       
+		"*://*.github.com/*"
+    ],
+    "icons": {
+        "16": "githubli-icon.png",
+        "48": "githubli-icon.png",
+        "128": "githubli-icon.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://*.github.com/*/files"],
+            "css": [],
+            "js": ["main.js"],
+            "all_frames": true
+        }
+    ]
+}
