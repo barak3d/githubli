@@ -104,8 +104,10 @@ function injectScript(source) {
 function main() {
     (function init() {
         let index = 0;
-        function selectListItem(list, index) {
-            list[index].focus();
+        function selectListItem(list, index, ignoreFocus) {
+            if (!ignoreFocus) {
+                list[index].focus();
+            }
             list[index].style.outline = "1px solid red";
             const loadMoreEl = document.querySelector('#diff-' + index).querySelector(".js-diff-load .js-button-text");
             if (loadMoreEl) {
@@ -155,8 +157,7 @@ function main() {
         setInterval(() => {
                 list = document.querySelectorAll('.js-reviewed-toggle');
                 if (list && list[index]) {
-                    list[index].style.outline = "1px solid red";
-                    // list[index].focus();
+                    selectListItem(list, index, true);
                 }        
         }, 100);
 
