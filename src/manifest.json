@@ -1,9 +1,8 @@
 {
     "manifest_version": 2,
     "name": "githubli",
-    "description": "Makes github code reviews less irritating",
-    "version": "1.5",
-
+    "description": "Makes github code reviews less irritating by easing the navigation between files for code review using the keyboard arrows (UP/Down) and space for selection",
+    "version": "1.7",
     "permissions": [       
 		"*://*.github.com/*"
     ],
@@ -14,7 +13,7 @@
     },
     "content_scripts": [
         {
-            "matches": ["*://*.github.com/*/files"],
+            "matches": ["*://*.github.com/*"],
             "css": [],
             "js": ["main.js"],
             "all_frames": true
