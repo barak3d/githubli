@@ -104,11 +104,12 @@ function injectScript(source) {
 function main() {
     (function init() {
         let index = 0;
+        const boxShadowValue = "rgb(78, 148, 181) 0px 0px 5px 5px";
         function selectListItem(list, index, ignoreFocus) {
             if (!ignoreFocus) {
                 list[index].focus();
             }
-            list[index].style.outline = "1px solid red";
+            list[index].style.boxShadow = boxShadowValue;
             const loadMoreEl = document.querySelector('#diff-' + index).querySelector(".js-diff-load .js-button-text");
             if (loadMoreEl) {
                 loadMoreEl.click();
@@ -122,7 +123,7 @@ function main() {
             let lastSelectedIndex = index;
             if (event.code === "ArrowDown") {
                 console.log("ArrowDown");
-                list[index].style.outline = "none";
+                list[index].style.boxShadow = "none";
                 if (index !== list.length -1) {
                     index++;
                     selectListItem(list, index);
@@ -133,7 +134,7 @@ function main() {
                 event.stopPropagation();
             } else if (event.code === "ArrowUp") {
                 console.log("ArrowUp");
-                list[index].style.outline = "none";
+                list[index].style.boxShadow = "none";
                 if(index !== 0) {
                     index--;
                 }
@@ -149,7 +150,7 @@ function main() {
                 }, 300);
                 list[index].focus();
                 list[index].click();
-                list[index].style.outline = "1px solid red";
+                list[index].style.boxShadow = boxShadowValue;
                 console.log("index", index);
             }
         });
