@@ -2,15 +2,15 @@
     "manifest_version": 2,
     "name": "githubli",
     "description": "Makes github code reviews less irritating",
-    "version": "1.3",
+    "version": "1.4",
 
     "permissions": [       
 		"*://*.github.com/*"
     ],
     "icons": {
-        "16": "githubli-icon.png",
-        "48": "githubli-icon.png",
-        "128": "githubli-icon.png"
+        "16": "githubli-icon-16.png",
+        "48": "githubli-icon-48.png",
+        "128": "githubli-icon-128.png"
     },
     "content_scripts": [
         {
