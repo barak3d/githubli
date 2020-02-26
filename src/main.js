@@ -115,11 +115,15 @@ function main() {
                 loadMoreEl.click();
             }
         }
+        function getFilesList() {
+            return document.querySelectorAll('.js-reviewed-toggle');
+        }
+        let list;
         document.addEventListener("keydown" , (event) => {
-            if (event.target.tagName === "TEXTAREA") {
+            if (event.target.tagName === "TEXTAREA" || !window.location.pathname.includes("files")) {
                 return true;
             }
-            let list = document.querySelectorAll('.js-reviewed-toggle');
+            list = getFilesList();
             let lastSelectedIndex = index;
             if (event.code === "ArrowDown") {
                 console.log("ArrowDown");
@@ -129,7 +133,7 @@ function main() {
                     selectListItem(list, index);
                 }
                 lastSelectedIndex = index;
-                console.log("index", index);
+                console.log("File review index", index);
                 event.preventDefault();
                 event.stopPropagation();
             } else if (event.code === "ArrowUp") {
@@ -139,29 +143,31 @@ function main() {
                     index--;
                 }
                 selectListItem(list, index);
-                console.log("index", index);
+                console.log("File review index", index);
                 event.preventDefault();
                 event.stopPropagation();
             } else if (event.code === "Space") {
                 window.setTimeout(() => {
-                    list = document.querySelectorAll('.js-reviewed-toggle');
+                    list = getFilesList();
                     list[lastSelectedIndex].scrollIntoView(true);
                     window.scrollBy(0, -70);
                 }, 300);
                 list[index].focus();
                 list[index].click();
                 list[index].style.boxShadow = boxShadowValue;
-                console.log("index", index);
+                console.log("File review index", index);
             }
         });
 
         setInterval(() => {
-                list = document.querySelectorAll('.js-reviewed-toggle');
+                if (!window.location.pathname.includes("files")){
+                    return true;
+                }
+                list = getFilesList();
                 if (list && list[index]) {
                     selectListItem(list, index, true);
                 }        
         }, 100);
-
     })();
 }
 
