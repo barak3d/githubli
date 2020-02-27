@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
     "name": "githubli",
-    "description": "Makes github code reviews less irritating by easing the navigation between files for code review using the keyboard arrows (UP/Down) and space for selection",
-    "version": "1.7",
+    "description": "Makes github code reviews less irritating by easing the navigation between files for code review",
+    "version": "1.8",
     "permissions": [       
 		"*://*.github.com/*"
     ],

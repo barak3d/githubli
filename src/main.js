@@ -110,7 +110,7 @@ function main() {
                 list[index].focus();
             }
             list[index].style.boxShadow = boxShadowValue;
-            const loadMoreEl = document.querySelector('#diff-' + index).querySelector(".js-diff-load .js-button-text");
+            const loadMoreEl = document.querySelectorAll(".file")[index].querySelector(".js-diff-load .js-button-text");
             if (loadMoreEl) {
                 loadMoreEl.click();
             }
