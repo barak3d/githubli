@@ -66,8 +66,7 @@ function injectScript(source) {
             "document.getElementById('" + id + "').innerText=JSON.stringify(value);})();";
 
         elem.id = id;
-    }
-    else // plain string, just copy it over.
+    } else // plain string, just copy it over.
     {
         script = source;
     }
@@ -93,8 +92,7 @@ function injectScript(source) {
             throw (ret.callResult);
         else
             return (ret.callResult);
-    }
-    else // plain text insertion, return the new script element.
+    } else // plain text insertion, return the new script element.
         return (elem);
 }
 
@@ -105,6 +103,7 @@ function main() {
     (function init() {
         let index = 0;
         const boxShadowValue = "rgb(78, 148, 181) 0px 0px 5px 5px";
+
         function selectListItem(list, index, ignoreFocus) {
             if (!ignoreFocus) {
                 list[index].focus();
@@ -115,12 +114,15 @@ function main() {
                 loadMoreEl.click();
             }
         }
+
         function getFilesList() {
             return document.querySelectorAll('.js-reviewed-toggle');
         }
+
         let list;
-        document.addEventListener("keydown" , (event) => {
-            if (event.target.tagName === "TEXTAREA" || !window.location.pathname.includes("files")) {
+        document.addEventListener("keydown", (event) => {
+            if (event.target.tagName === "TEXTAREA" || !window.location.pathname.includes("files") ||
+                event.metaKey || event.altKey || event.shiftKey || event.ctrlKey) {
                 return true;
             }
             list = getFilesList();
@@ -128,7 +130,7 @@ function main() {
             if (event.code === "ArrowDown") {
                 console.log("ArrowDown");
                 list[index].style.boxShadow = "none";
-                if (index !== list.length -1) {
+                if (index !== list.length - 1) {
                     index++;
                     selectListItem(list, index);
                 }
@@ -139,7 +141,7 @@ function main() {
             } else if (event.code === "ArrowUp") {
                 console.log("ArrowUp");
                 list[index].style.boxShadow = "none";
-                if(index !== 0) {
+                if (index !== 0) {
                     index--;
                 }
                 selectListItem(list, index);
@@ -160,13 +162,13 @@ function main() {
         });
 
         setInterval(() => {
-                if (!window.location.pathname.includes("files")){
-                    return true;
-                }
-                list = getFilesList();
-                if (list && list[index]) {
-                    selectListItem(list, index, true);
-                }        
+            if (!window.location.pathname.includes("files")) {
+                return true;
+            }
+            list = getFilesList();
+            if (list && list[index]) {
+                selectListItem(list, index, true);
+            }
         }, 100);
     })();
 }
